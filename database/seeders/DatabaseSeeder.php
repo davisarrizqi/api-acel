@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ainur Dwi Utmawati',
             'email' => 'utmadwi@gmail.com',
         ]);
+
+        $this->call([
+            SalonSeeder::class,
+            SalonTreatmentSeeder::class,
+        ]);
     }
 }

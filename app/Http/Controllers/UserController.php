@@ -65,4 +65,35 @@ class UserController extends Controller
             ], 200);
         }
     }
+
+    public function updateProfile(Request $request){
+        $validated = Validator::make($request->all(), [
+            'name' => 'sometimes|required|string|max:255',
+            'password' => 'sometimes|required|string|min:8',
+        ]);
+
+        if ($validated->fails()) {
+            return json_encode([
+                'status' => 'error',
+                'message' => 'Update failed, please try again',
+                'errors' => $validated->errors(),
+            ], 400);
+        }
+
+        else {
+            $user = User::find($request->id);
+            $user->name = $request->name ?? $user->name;
+            $user->email = $request->email ?? $user->email;
+            
+            if ($request->filled('password')) {
+                $user->password = bcrypt($request->password);
+            } $user->save();
+
+            return json_encode([
+                'status' => 'success',
+                'message' => 'Profile updated successfully',
+                'dataset' => $user,
+            ], 200);
+        }
+    }
 }

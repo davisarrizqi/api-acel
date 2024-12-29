@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('salon_bookings', function (Blueprint $table) {
             // main structure
             $table->id();
-            $table->string('email');
-            $table->foreign('email')->references('email')->on('users')->cascadeOnDelete();
             
             // salons
             $table->integer('salon_id');
@@ -30,8 +28,8 @@ return new class extends Migration
             $table->foreign('treatment_id')->references('id')->on('salon_treatments')->cascadeOnDelete();
             
             // timestamps
-            $table->date('booking_date');
-            $table->time('booking_time');
+            $table->date('booking_date')->default(now());
+            $table->time('booking_time')->default(now());
             $table->timestamps();
         });
     }

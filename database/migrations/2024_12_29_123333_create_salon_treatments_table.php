@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('salon_treatments', function (Blueprint $table) {
             $table->id();
-            $table->integer('salon_id');
-            $table->foreign('salon_id')->references('id')->on('salons')->cascadeOnDelete();
             $table->string('name');
             $table->string('image');
             $table->integer('price');
