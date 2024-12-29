@@ -10,7 +10,7 @@
     <div class="container mx-auto p-4">
         <header class="text-center my-8">
             <h1 class="text-4xl font-bold">Selamat Datang di API Acel</h1>
-            <p class="text-lg mt-2">API Terbaik dari Orang Paling Cantik</p>
+            <p class="text-lg mt-2">API Salon Downton</p>
         </header>
         <main>
             <section class="p-6 rounded-lg shadow-lg">
